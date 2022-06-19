@@ -44,10 +44,10 @@ namespace SimAlpha.States
 
                 Random RNFall = new();
                 int IRNFall = RNFall.Next(0, 5000);
-                if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(1); };
+                if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
 
                 if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; };
-                if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(2); };
+                if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); };
                 if (DataGen.BATTERY == 0) { DataGen.BATTERY = 100; };
 
                 DataGen.TSPAN = DataGen.TIME - DataGen.GTIME;

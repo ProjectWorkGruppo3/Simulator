@@ -4,17 +4,17 @@ namespace SimAlpha
 {
     internal class AllarmGen
     {
-        internal static void SendAllarm(int AType)
+        internal static void SendAllarm(AllarmType type)
         {
-            switch (AType)
+            switch (type)
             {
-                case 0:
+                case AllarmType.HEARTBEAT:
                     Console.WriteLine("ALLARM HEARTBEAT");
                     break;
-                case 1:
+                case AllarmType.FALL:
                     Console.WriteLine("ALLARM NFALL");
                     break;
-                case 2:
+                case AllarmType.LOW_BATTERY:
                     Console.WriteLine("ALLARM BATTERY");
                     break;
             }
