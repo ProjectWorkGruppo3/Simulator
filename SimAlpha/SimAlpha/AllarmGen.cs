@@ -2,6 +2,13 @@
 
 namespace SimAlpha
 {
+    public enum AllarmType
+    {
+        HEARTBEAT,
+        LOW_BATTERY,
+        FALL
+    }
+
     internal class AllarmGen
     {
         internal static void SendAllarm(AllarmType type)
