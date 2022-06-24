@@ -4,7 +4,9 @@ namespace SimAlpha
 {
     internal class DataGen
     {
-        public static readonly string UUID = "b7b55ed1-bb77-4057-918f-2386dd87161f";
+        public static string UUID;
+        public static double[][] LATLON = new double[2][];
+        public static double[] GPS = new double[2];
         public static System.Timers.Timer TMR;
         public static DateTimeOffset TIME;
         public static DateTimeOffset GTIME;
@@ -22,20 +24,23 @@ namespace SimAlpha
 
         public static void Data()
         {
-            TMR = new System.Timers.Timer(10000); // 60000
+            Random random = new();
+            TMR = new System.Timers.Timer(5000); // 60000
             TMR.Elapsed += TSData.SendData;
             TMR.AutoReset = true;
             TMR.Enabled = true;
-            Random RVHeartBeat = new();
-            HEARTBEAT = RVHeartBeat.Next(60, 101);
-            Random RBattery = new();
-            BATTERY = RBattery.Next(50, 101);
-            Random RRTime = new();
-            RTIME = RRTime.Next(0, 57600);
+            UUID = Guid.NewGuid().ToString();
+            HEARTBEAT = random.Next(60, 101);
+            BATTERY = random.Next(50, 101);
+            RTIME = random.Next(0, 57600);
+            LATLON[0] = new double[5] { 46.056041, 45.462712, 41.909986, 44.499096, 43.942856 };
+            LATLON[1] = new double[5] { 13.174122, 9.107692, 12.395913, 11.261645, 12.390053 };
+            int IRGPSL = random.Next(0, 5);
+            GPS[0] = LATLON[0][IRGPSL];
+            GPS[1] = LATLON[1][IRGPSL];
             while (true)
             {
-                Random RState = new();
-                int IRState = RState.Next(0, 4);
+                int IRState = random.Next(0, 4);
                 switch (IRState)
                 {
                     case 0: States.CState0.State0(); break;
