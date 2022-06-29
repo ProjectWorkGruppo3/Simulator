@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace SimAlpha
 {
@@ -10,7 +10,7 @@ namespace SimAlpha
         public static string AWSID;
         public static string AWSKEY;
 
-        static void Main()
+        static async Task Main()
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
@@ -18,8 +18,8 @@ namespace SimAlpha
             var config = builder.Build();
             AWSID = config["Secrets:AWSCREDENTIALSID"];
             AWSKEY = config["Secrets:AWSCREDENTIALSKEY"];
-            if (AuthUser.AuthToken() == true) { DataGen.Data(); }
-            else { Console.WriteLine("Utente non trovato"); Main(); }
+            await AuthUser.AuthToken();
+            DataGen.Data();
         }
     }
 }
