@@ -15,7 +15,7 @@ namespace SimAlpha.States
             {
                 DataGen.TIME = DateTimeOffset.UtcNow;
 
-                DataGen.STATE = "SIT";
+                DataGen.STATE = "Sitting";
 
                 int IRSteps = random.Next(0, 100);
                 if (IRSteps == 1) { DataGen.STEPS++; };

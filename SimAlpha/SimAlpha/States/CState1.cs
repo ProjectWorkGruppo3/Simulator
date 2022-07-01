@@ -14,7 +14,7 @@ namespace SimAlpha.States
             {
                 DataGen.TIME = DateTimeOffset.UtcNow;
 
-                DataGen.STATE = "WALK";
+                DataGen.STATE = "Walking";
 
                 int IRSteps = random.Next(0, 10);
                 DataGen.STEPS += IRSteps switch
