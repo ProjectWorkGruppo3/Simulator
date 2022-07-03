@@ -16,7 +16,7 @@ namespace SimAlpha.States
             {
                 DataGen.TIME = DateTimeOffset.UtcNow;
 
-                DataGen.STATE = "SLEEP";
+                DataGen.STATE = "Sleeping";
 
                 int IRHeartBeat = random.Next(0, 10);
                 switch (IRHeartBeat)
