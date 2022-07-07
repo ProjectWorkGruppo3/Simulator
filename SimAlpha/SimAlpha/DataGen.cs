@@ -25,7 +25,7 @@ namespace SimAlpha
         public static void Data()
         {
             Random random = new();
-            TMR = new System.Timers.Timer(5000); // 60000
+            TMR = new System.Timers.Timer(5000); //60000
             TMR.Elapsed += TSData.SendData;
             TMR.AutoReset = true;
             TMR.Enabled = true;

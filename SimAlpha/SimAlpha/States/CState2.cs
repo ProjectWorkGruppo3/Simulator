@@ -32,7 +32,7 @@ namespace SimAlpha.States
                 if (DataGen.HEARTBEAT > 200) { AllarmGen.SendAllarm(0); };
 
                 int IRNFall = random.Next(0, 5000);
-                if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
+                if (IRNFall == 5) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
 
                 if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; };
                 if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); };
