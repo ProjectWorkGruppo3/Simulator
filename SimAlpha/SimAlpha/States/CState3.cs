@@ -10,7 +10,7 @@ namespace SimAlpha.States
             DataGen.STANDING = 0;
             DataGen.RTIME = 0;
             Random random = new();
-            int IRTime = random.Next(0, 25);  //21600, 36001
+            int IRTime = random.Next(21600, 36001);
             if (DataGen.STANDING == 0) { DataGen.GTIME = DateTimeOffset.UtcNow; }
             for (int i = 1; i < IRTime; i++)
             {

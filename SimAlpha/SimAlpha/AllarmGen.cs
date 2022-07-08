@@ -17,7 +17,7 @@ namespace SimAlpha
 
         internal static async void SendAllarm(AllarmType type)
         {
-            client = new() { BaseAddress = new Uri("https://localhost:7013") };
+            client = new() { BaseAddress = new Uri("https://0v0ark84yj.execute-api.eu-west-1.amazonaws.com") };
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AuthUser.TOKEN);

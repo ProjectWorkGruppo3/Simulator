@@ -28,10 +28,10 @@ namespace SimAlpha
                     Console.WriteLine("-----");
                     CREDENTIALS = new { Email = username, Password = password };
                 }
-                client = new() { BaseAddress = new Uri("https://localhost:7013") };
+                client = new() { BaseAddress = new Uri("https://0v0ark84yj.execute-api.eu-west-1.amazonaws.com") };
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.PostAsJsonAsync("/api/v1/users/login", CREDENTIALS);
+                HttpResponseMessage response = await client.PostAsJsonAsync("/api/v1/Users/login", CREDENTIALS);
                 client.Dispose();
                 if (response.StatusCode == HttpStatusCode.OK)
                 {

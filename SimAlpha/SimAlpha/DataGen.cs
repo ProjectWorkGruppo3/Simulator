@@ -25,11 +25,12 @@ namespace SimAlpha
         public static void Data()
         {
             Random random = new();
-            TMR = new System.Timers.Timer(5000); //60000
+            TMR = new System.Timers.Timer(60000);
             TMR.Elapsed += TSData.SendData;
             TMR.AutoReset = true;
             TMR.Enabled = true;
-            UUID = Guid.NewGuid().ToString();
+            if (Program.ARGS != null) { UUID = Program.ARGS; }
+            else { UUID = Guid.NewGuid().ToString(); }
             HEARTBEAT = random.Next(60, 101);
             BATTERY = random.Next(50, 101);
             RTIME = random.Next(0, 57600);

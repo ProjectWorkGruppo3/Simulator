@@ -9,9 +9,11 @@ namespace SimAlpha
     {
         public static string AWSID;
         public static string AWSKEY;
+        public static string ARGS;
 
-        static async Task Main()
+        static async Task Main(string[] args)
         {
+            ARGS = args[0].Trim();
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddUserSecrets(Assembly.GetExecutingAssembly(), true);

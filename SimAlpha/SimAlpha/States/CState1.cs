@@ -8,7 +8,7 @@ namespace SimAlpha.States
         public static void State1()
         {
             Random random = new();
-            int IRTime = random.Next(1, 25);   //7201
+            int IRTime = random.Next(1, 7201);
             if (DataGen.STANDING == 0) { DataGen.GTIME = DateTimeOffset.UtcNow; }
             for (int i = 1; i < IRTime; i++)
             {
