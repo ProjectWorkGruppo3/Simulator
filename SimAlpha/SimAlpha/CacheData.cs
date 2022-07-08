@@ -12,6 +12,7 @@ namespace SimAlpha
             var cacheItem = new CacheItem(Guid.NewGuid().ToString(), TSData.JSON);
             var cacheItemPolicy = new CacheItemPolicy { AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(60.0) };
             CACHE.Add(cacheItem, cacheItemPolicy);
+            Console.WriteLine(CACHE.GetCount());
         }
     }
 }

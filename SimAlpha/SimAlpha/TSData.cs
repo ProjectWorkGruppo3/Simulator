@@ -12,20 +12,22 @@ namespace SimAlpha
 
         internal static async void SendData(Object source, ElapsedEventArgs e)
         {
-            JSON = JsonConvert.SerializeObject(new { 
+            JSON = JsonConvert.SerializeObject(new
+            {
                 DeviceId = DataGen.UUID,
                 Timestamp = DataGen.TIME,
-                data = new {
-                    serendipity = DataGen.SERENDIPITY, 
-                    state = DataGen.STATE, 
-                    stepsWalked = DataGen.STEPS, 
-                    heartbeat = DataGen.HEARTBEAT, 
-                    numberOfFalls = DataGen.NFALL, 
-                    battery = DataGen.BATTERY, 
-                    standings = DataGen.STANDING, 
-                    latitude = DataGen.GPS[0], 
-                    longitude = DataGen.GPS[1] 
-                } 
+                data = new
+                {
+                    serendipity = DataGen.SERENDIPITY,
+                    state = DataGen.STATE,
+                    stepsWalked = DataGen.STEPS,
+                    heartbeat = DataGen.HEARTBEAT,
+                    numberOfFalls = DataGen.NFALL,
+                    battery = DataGen.BATTERY,
+                    standings = DataGen.STANDING,
+                    latitude = DataGen.GPS[0],
+                    longitude = DataGen.GPS[1]
+                }
             });
             Console.WriteLine(JSON);
             CacheData.SaveData();
@@ -38,7 +40,7 @@ namespace SimAlpha
                     Thread.Sleep(1000);
                 }
             }
-            catch(Exception ex){ Console.WriteLine(ex); }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
     }
 }

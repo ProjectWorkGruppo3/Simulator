@@ -8,7 +8,7 @@ namespace SimAlpha.States
         public static void State2()
         {
             Random random = new();
-            int IRTime = random.Next(1, 25);   //3601
+            int IRTime = random.Next(1, 3601);
             if (DataGen.STANDING == 0) { DataGen.GTIME = DateTimeOffset.UtcNow; }
             for (int i = 1; i < IRTime; i++)
             {
@@ -32,7 +32,7 @@ namespace SimAlpha.States
                 if (DataGen.HEARTBEAT > 200) { AllarmGen.SendAllarm(0); };
 
                 int IRNFall = random.Next(0, 5000);
-                if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
+                if (IRNFall == 5) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
 
                 if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; };
                 if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); };
