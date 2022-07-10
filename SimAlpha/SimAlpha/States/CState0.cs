@@ -34,8 +34,8 @@ namespace SimAlpha.States
                 if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
 
                 if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; };
-                if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); };
-                if (DataGen.BATTERY == 0) { DataGen.BATTERY = 100; };
+                if (DataGen.BATTERY == 10 && DataGen.BSEND == false) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); DataGen.BSEND = true; };
+                if (DataGen.BATTERY == 0) { DataGen.BATTERY = 100; DataGen.BSEND = false; };
 
                 DataGen.TSPAN = DataGen.TIME - DataGen.GTIME;
                 DataGen.STANDING = Convert.ToInt32(DataGen.TSPAN.TotalSeconds);

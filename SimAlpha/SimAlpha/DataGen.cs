@@ -21,6 +21,7 @@ namespace SimAlpha
         public static int STANDING;
         public static string STATE;
         public static int RTIME;
+        public static bool BSEND;
 
         public static void Data()
         {

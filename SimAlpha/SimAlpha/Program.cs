@@ -13,7 +13,7 @@ namespace SimAlpha
 
         static async Task Main(string[] args)
         {
-            ARGS = args[0].Trim();
+            if (args.Length != 0) { ARGS = args[0].Trim(); }
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddUserSecrets(Assembly.GetExecutingAssembly(), true);

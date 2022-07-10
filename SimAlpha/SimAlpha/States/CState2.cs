@@ -5,6 +5,8 @@ namespace SimAlpha.States
 {
     internal class CState2
     {
+        private static bool SHEART;
+
         public static void State2()
         {
             Random random = new();
@@ -29,14 +31,14 @@ namespace SimAlpha.States
                     case 9: if (DataGen.HEARTBEAT < 218) { DataGen.HEARTBEAT += 2; } else { DataGen.HEARTBEAT -= 2; }; break;
                     default: break;
                 }
-                if (DataGen.HEARTBEAT > 200) { AllarmGen.SendAllarm(0); };
+                if (DataGen.HEARTBEAT > 200 && SHEART == false) { AllarmGen.SendAllarm(0); SHEART = true; };
 
                 int IRNFall = random.Next(0, 5000);
-                if (IRNFall == 5) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
+                if (IRNFall == 50) { DataGen.NFALL++; AllarmGen.SendAllarm(AllarmType.FALL); };
 
-                if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; };
-                if (DataGen.BATTERY == 10) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); };
-                if (DataGen.BATTERY == 0) { DataGen.BATTERY = 100; };
+                if (DataGen.COUNTER == 900) { DataGen.BATTERY--; DataGen.COUNTER = 0; SHEART = false; };
+                if (DataGen.BATTERY == 10 && DataGen.BSEND == false) { AllarmGen.SendAllarm(AllarmType.LOW_BATTERY); DataGen.BSEND = true; };
+                if (DataGen.BATTERY == 0) { DataGen.BATTERY = 100; DataGen.BSEND = false; };
 
                 DataGen.TSPAN = DataGen.TIME - DataGen.GTIME;
                 DataGen.STANDING = Convert.ToInt32(DataGen.TSPAN.TotalSeconds);
